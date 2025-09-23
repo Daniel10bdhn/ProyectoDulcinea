@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurar Contraseña</title>
+    <link rel="stylesheet" href="../Estilos/style-recuperar-contra.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-form">
+            <h2>Restaurar Contraseña</h2>
+            <!-- CORREGIDO: id agregado -->
+            <form id="recoveryForm" action="enviar_correo_recuperacion.php" method="POST">
+                <div class="container-input">
+                    <ion-icon name="mail-open-outline"></ion-icon>
+                    <input type="email" name="email" placeholder="Email registrado" required>
+                </div>
+                <button class="boton" type="submit">Enviar enlace de recuperación</button>
+            </form>
+
+              <!-- Botón para volver al inicio -->
+              <div class="form-group">
+                  <a href="../../home.html" class="btn btn-secondary btn-block">
+                      Volver al inicio
+                  </a>
+              </div>
+
+            
+            <!-- Modal -->
+            <div class="modal" id="modal">
+              <div class="modal-content" id="modalContent">
+                <h3 id="modalMessage"></h3>
+                <button class="close-btn" id="closeBtn">Cerrar</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+const form = document.getElementById('recoveryForm');
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+const modalMessage = document.getElementById('modalMessage');
+const closeBtn = document.getElementById('closeBtn');
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const fd = new FormData(this);
+
+  try {
+    const res = await fetch('enviar_correo_recuperacion.php', { 
+      method: 'POST', 
+      body: fd 
+    });
+    const data = await res.json();
+
+    modal.classList.add('open');
+    modalMessage.textContent = data.message;
+
+    modalContent.classList.remove('success','error');
+    modalContent.classList.add(data.success ? 'success' : 'error');
+
+    if (data.success) {
+      setTimeout(()=> closeModal(), 4000);
+    }
+  } catch (err) {
+    modal.classList.add('open');
+    modalMessage.textContent = 'Error de conexión. Intenta de nuevo.';
+    modalContent.classList.remove('success');
+    modalContent.classList.add('error');
+  }
+});
+
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', function(e){
+  if (e.target === modal) closeModal();
+});
+
+function closeModal(){
+  modal.classList.remove('open');
+}
+</script>
+</body>
+</html>

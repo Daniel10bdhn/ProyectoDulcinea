@@ -1,0 +1,144 @@
+/* Fondo con imagen oscura */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: url("../Imagenes/fondo-productos.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+}
+
+
+
+/* Contenedor */
+.container {
+  background: transparent; /* quitamos el beige */
+  padding: 20px;
+}
+
+/* Títulos */
+h3 {
+  color: #f3dab1; /* contraste claro */
+  font-weight: bold;
+}
+
+/* Tarjetas */
+.card {
+  border: none;
+  border-radius: 12px;
+  background: rgba(243, 218, 177, 0.95); /* beige translúcido */
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.card-title {
+  color: #6f4e37;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #4b2e2a;
+  font-size: 1em;
+}
+
+/* Botones */
+.btn-warning {
+  background-color: #e8a87c;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn-warning:hover {
+  background-color: #d79971;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #e85a4f;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #d64541;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background-color: #99b898;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  background-color: #88a48c;
+  transform: scale(1.05);
+}
+
+/* Barra de búsqueda */
+#searchInput {
+  border: 2px solid #e8a87c;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #e85a4f;
+  box-shadow: 0px 0px 8px #e85a4f;
+}
+
+/* Botones de formularios */
+form button {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+form button:hover {
+  background-color: #4b2e2a85;
+  transform: scale(1.05);
+}
+
+/* Botón flotante "Venta" */
+.venta {
+  position: absolute;
+  background-image: url(../Imagenes/car.png);
+  background-size: cover;
+  background-position: center;
+  top: 60px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.venta button {
+  font-size: 30px;
+  padding: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.venta button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
